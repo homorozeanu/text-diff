@@ -1,7 +1,7 @@
 {
   "name": "basic-text-diff",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A small, offline text diff tool that builds to a single self-contained HTML file.",
   "type": "module",
   "engines": {

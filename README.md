@@ -36,12 +36,11 @@ Pushing a version tag builds the file and publishes it as a GitHub release
 with `index.html` and a gzipped copy attached:
 
 ```sh
-git tag v1.0.0
-git push origin v1.0.0
+npm version patch                   # bumps the version, commits and tags
+git push origin main --follow-tags
 ```
 
-A release can also be started by hand from the Actions tab (*Release* →
-*Run workflow*) for a tag that already exists.
+See [RELEASE.md](RELEASE.md) for the full steps.
 
 ## Using it
 
