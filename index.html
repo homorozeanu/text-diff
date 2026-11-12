@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Text Diff</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230969da'/%3E%3Cpath d='M3 5h4M5 3v4M9 11h4' stroke='%23fff' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <script>
+      // Apply a saved theme before first paint to avoid a flash.
+      try {
+        var savedTheme = localStorage.getItem('text-diff:theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <h1>Text Diff</h1>
+        <p class="tagline">Paste two texts to compare them. Nothing leaves your browser.</p>
+        <button type="button" id="theme-toggle" class="btn ghost" title="Switch between light and dark theme">
+          Theme
+        </button>
+      </header>
+
+      <main>
+        <section class="inputs" aria-label="Texts to compare">
+          <div class="pane">
+            <div class="pane-head">
+              <label for="text-a">Original</label>
+              <span class="pane-meta" id="meta-a"></span>
+              <button type="button" class="link" id="clear-a">Clear</button>
+            </div>
+            <textarea
+              id="text-a"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off"
+              autocorrect="off"
+              wrap="off"
+              placeholder="Paste the original text here, or drop a text file…"
+            ></textarea>
+          </div>
+          <div class="pane">
+            <div class="pane-head">
+              <label for="text-b">Changed</label>
+              <span class="pane-meta" id="meta-b"></span>
+              <button type="button" class="link" id="clear-b">Clear</button>
+            </div>
+            <textarea
+              id="text-b"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off"
+              autocorrect="off"
+              wrap="off"
+              placeholder="Paste the changed text here, or drop a text file…"
+            ></textarea>
+          </div>
+        </section>
+
+        <section class="toolbar" aria-label="Comparison options">
+          <fieldset class="segmented">
+            <legend class="sr-only">Layout</legend>
+            <label><input type="radio" name="view" value="split" checked /><span>Side by side</span></label>
+            <label><input type="radio" name="view" value="unified" /><span>Unified</span></label>
+          </fieldset>
+
+          <label class="field">
+            <span>Highlight</span>
+            <select id="opt-inline">
+              <option value="word">Words</option>
+              <option value="char">Characters</option>
+              <option value="off">Whole lines</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Whitespace</span>
+            <select id="opt-whitespace">
+              <option value="exact">Compare</option>
+              <option value="trailing">Ignore at line end</option>
+              <option value="amount">Ignore amount</option>
+              <option value="all">Ignore all</option>
+            </select>
+          </label>
+
+          <label class="check"><input type="checkbox" id="opt-case" /> Ignore case</label>
+          <label class="check"><input type="checkbox" id="opt-collapse" checked /> Collapse unchanged</label>
+          <label class="check"><input type="checkbox" id="opt-show-ws" /> Show whitespace</label>
+
+          <div class="actions">
+            <button type="button" id="btn-swap" class="btn" title="Swap the two texts">Swap</button>
+            <button type="button" id="btn-sample" class="btn" title="Fill both boxes with an example">Sample</button>
+            <button type="button" id="btn-clear" class="btn" title="Empty both boxes">Clear all</button>
+          </div>
+        </section>
+
+        <section class="summary" id="summary" hidden>
+          <div class="stats" id="stats" role="status" aria-live="polite"></div>
+          <div class="nav">
+            <span class="nav-pos" id="nav-pos"></span>
+            <button type="button" id="btn-prev" class="btn" title="Previous change (Shift+F7)">↑ Prev</button>
+            <button type="button" id="btn-next" class="btn" title="Next change (F7)">↓ Next</button>
+            <button type="button" id="btn-copy" class="btn" title="Copy the differences as a unified diff patch">
+              Copy patch
+            </button>
+          </div>
+        </section>
+
+        <ul class="notes" id="notes" hidden></ul>
+
+        <section class="output" id="output" aria-label="Differences" hidden></section>
+
+        <p class="placeholder" id="empty">
+          Paste text into both boxes above. Differences appear here as you type.
+        </p>
+      </main>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

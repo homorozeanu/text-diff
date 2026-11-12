@@ -1,0 +1,38 @@
+# Dependencies (restored with `npm install`)
+node_modules/
+
+# Build output (`npm run build` writes dist/index.html)
+dist/
+dist-ssr/
+
+# Vite and Vitest caches
+.vite/
+vite.config.ts.timestamp-*
+.vitest/
+coverage/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Browser test artefacts (Playwright screenshots and traces)
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Editors and operating system
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
