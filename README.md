@@ -99,3 +99,7 @@ src/sample.ts           texts for the Sample button
 tests/                  Vitest unit tests
 vite.config.ts          Vite + vite-plugin-singlefile configuration
 ```
+
+## License
+
+[MIT](LICENSE)
