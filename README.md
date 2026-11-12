@@ -30,6 +30,19 @@ Other scripts:
 | `npm test`        | Unit tests for the diff engine (Vitest)        |
 | `npm run preview` | Serves the built `dist/` folder                |
 
+## Releases
+
+Pushing a version tag builds the file and publishes it as a GitHub release
+with `index.html` and a gzipped copy attached:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+A release can also be started by hand from the Actions tab (*Release* →
+*Run workflow*) for a tag that already exists.
+
 ## Using it
 
 - **Side by side / Unified** switches between two columns and a single
