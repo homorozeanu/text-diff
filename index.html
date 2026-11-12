@@ -24,8 +24,44 @@
       <header class="topbar">
         <h1>Text Diff</h1>
         <p class="tagline">Paste two texts to compare them. Nothing leaves your browser.</p>
-        <button type="button" id="theme-toggle" class="btn ghost" title="Switch between light and dark theme">
-          Theme
+        <button
+          type="button"
+          role="switch"
+          id="theme-toggle"
+          class="theme-switch"
+          aria-checked="true"
+          aria-label="Light theme"
+          title="Switch between light and dark theme"
+        >
+          <span class="theme-switch-track">
+            <span class="theme-switch-thumb">
+              <svg
+                class="theme-switch-icon theme-switch-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+              <svg
+                class="theme-switch-icon theme-switch-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            </span>
+          </span>
         </button>
       </header>
 

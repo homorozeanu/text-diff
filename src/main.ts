@@ -487,9 +487,19 @@ function init(): void {
     goToChange(event.shiftKey ? -1 : 1);
   });
 
-  byId('theme-toggle').addEventListener('click', () => {
+  // The switch is drawn from the theme itself (CSS); this keeps its state in
+  // step for assistive technology.
+  const themeSwitch = byId('theme-toggle');
+  const syncThemeSwitch = (): void => {
+    themeSwitch.setAttribute('aria-checked', String(effectiveTheme() === 'light'));
+  };
+  syncThemeSwitch();
+  // Without a saved choice the theme follows the system, also while open.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeSwitch);
+  themeSwitch.addEventListener('click', () => {
     const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
+    syncThemeSwitch();
     try {
       localStorage.setItem(THEME_KEY, next);
     } catch {
