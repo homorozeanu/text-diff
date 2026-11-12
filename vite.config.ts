@@ -11,5 +11,12 @@ export default defineConfig({
   test: {
     environment: 'node',
     include: ['tests/**/*.test.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json-summary', 'lcov'],
+      include: ['src/**/*.ts'],
+      // main.ts only wires the page together; it is not unit-tested.
+      exclude: ['src/main.ts'],
+    },
   },
 });

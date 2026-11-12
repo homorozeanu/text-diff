@@ -28,6 +28,7 @@ Other scripts:
 | ----------------- | ---------------------------------------------- |
 | `npm run dev`     | Development server with hot reload             |
 | `npm test`        | Unit tests for the diff engine (Vitest)        |
+| `npm run test:coverage` | Unit tests with a coverage report in `coverage/` |
 | `npm run preview` | Serves the built `dist/` folder                |
 
 ## Releases
