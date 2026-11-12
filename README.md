@@ -9,6 +9,8 @@ all JavaScript and CSS inlined. It needs no server and no network: open it
 from disk, mail it, or put it on a share. The texts you paste never leave the
 browser.
 
+![Text Diff comparing two texts side by side](TextDiff.png)
+
 ## Build
 
 Requires Node.js 22.12 or newer (24 recommended).
